@@ -7,6 +7,9 @@ app = FastAPI(
     description="An app for journaling and personalized financial learning.",
     version="1.0.0",
 )
+@app.get("/")
+async def root():
+    return {"message": "Welcome to the Financial Well-being App API"}
 
 app.include_router(journals.router, prefix="/journals", tags=["journals"])
 app.include_router(users.router, prefix="/users", tags=["users"])
